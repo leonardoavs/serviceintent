@@ -24,7 +24,47 @@ public class ServiceIntent extends CordovaPlugin {
                 return false;
             }
             JSONObject obj = args.getJSONObject(0);
-            Intent intent = null; //populateIntent(obj, callbackContext);
+            String action = obj.has("action") ? obj.getString("action") : null;
+            Intent intent = new Intent();
+            if (action != null)
+                intent.setAction(action);
+
+            JSONObject component = obj.has("component") ? obj.getJSONObject("component") : null;
+            if (component != null)
+            {
+                //  User has specified an explicit intent
+                String componentPackage = component.has("package") ? component.getString("package") : null;
+                String componentClass = component.has("class") ? component.getString("class") : null;
+                if (componentPackage == null || componentClass == null)
+                {
+                    Log.w(LOG_TAG, "Component specified but missing corresponding package or class");
+                    throw new JSONException("Component specified but missing corresponding package or class");
+                }
+
+                else
+                {
+                    ComponentName componentName = new ComponentName(componentPackage, componentClass);
+                    intent.setComponent(componentName);
+                }
+            }            
+
+            JSONObject extras = obj.has("extras") ? obj.getJSONObject("extras") : null;
+            Map<String, Object> extrasMap = new HashMap<String, Object>();
+            if (extras != null) {
+                JSONArray extraNames = extras.names();
+                for (int i = 0; i < extraNames.length(); i++) {
+                    String key = extraNames.getString(i);
+                    Object extrasObj = extras.get(key);
+                    extrasMap.put(key, extras.get(key));
+                }
+            }
+            
+            for (String key : extrasMap.keySet()) {
+                Object value = extrasMap.get(key);
+                String valueStr = String.valueOf(value);
+                intent.putExtra(key, valueStr);
+            }            
+            
             startService(intent);
             callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK));
             return true;
