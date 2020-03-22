@@ -1,0 +1,14 @@
+{
+  "name": "cordova-plugin-serviceintent",
+  "version": "0.0.1",
+  "cordova": {
+    "id": "cordova-plugin-serviceintent",
+    "platforms": []
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-serviceintent"
+    version="0.0.1"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <name>ServiceIntent</name>
+    <js-module name="ServiceIntent" src="www/ServiceIntent.js">
+        <clobbers target="cordova.plugins.ServiceIntent" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="ServiceIntent">
+                <param name="android-package" value="cordova-plugin-serviceintent.ServiceIntent" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <source-file src="src/android/ServiceIntent.java"
+            target-dir="src/cordova-plugin-serviceintent/ServiceIntent" />
+    </platform>
+</plugin>
