@@ -10,6 +10,9 @@ import org.json.JSONObject;
 
 import android.content.Intent;
 
+import java.util.Map;
+import java.util.HashMap;
+
 /**
  * This class echoes a string called from JavaScript.
  */
