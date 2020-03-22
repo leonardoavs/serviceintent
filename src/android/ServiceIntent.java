@@ -1,4 +1,4 @@
-package cordova-plugin-serviceintent;
+package android.serviceintent;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
