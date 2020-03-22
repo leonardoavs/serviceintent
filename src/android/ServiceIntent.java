@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 import android.content.ComponentName;
+import android.util.Log;
 
 /**
  * This class echoes a string called from JavaScript.
@@ -30,10 +31,10 @@ public class ServiceIntent extends CordovaPlugin {
                 return false;
             }
             JSONObject obj = args.getJSONObject(0);
-            String action = obj.has("action") ? obj.getString("action") : null;
+            String action2 = obj.has("action") ? obj.getString("action") : null;
             Intent intent = new Intent();
-            if (action != null)
-                intent.setAction(action);
+            if (action2 != null)
+                intent.setAction(action2);
 
             JSONObject component = obj.has("component") ? obj.getJSONObject("component") : null;
             if (component != null)
