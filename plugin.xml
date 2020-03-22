@@ -9,7 +9,7 @@
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="ServiceIntent">
-                <param name="android-package" value="cordova-plugin-serviceintent.ServiceIntent" />
+                <param name="android-package" value="android.serviceintent.ServiceIntent" />
             </feature>
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
